@@ -21,5 +21,6 @@ app.post('/send_search_text', function(req,res){
 });
 
 app.post('/receive_ajax', function(req, res){
-    console.log('ajax json data: '+JSON.stringify(req.body))
+    console.log('ajax json data: '+req.body.loginId)
+    
 })

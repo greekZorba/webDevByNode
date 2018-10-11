@@ -18,11 +18,18 @@
 
     <script>
         document.querySelector('#ajaxSend').addEventListener('click', function(){
+            var searchText = JSON.stringify(document.forms[0].elements[0].value);
+            var loginId = JSON.stringify(document.forms[0].elements[1].value);
             
+            var parameter = {};
+            parameter['searchText'] = searchText;
+            parameter['loginId'] = loginId;
+
+            console.log('파라미터: '+ JSON.stringify(parameter));
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://localhost:3000/receive_ajax')
             xhr.setRequestHeader('Content-Type',"application/json")
-            xhr.send(document.forms[0])
+            xhr.send(JSON.stringify(parameter));
         })
     
     </script>
