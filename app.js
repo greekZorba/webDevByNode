@@ -1,6 +1,19 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
+var mariaDB = require('mariadb');
+var connection = mariaDB.createConnection({
+	/** DB 접속 정보 */
+})
+.then(conn => {
+	conn.query('SELECT "Hello world!" as my_message') // Execute a query                                                                                                                                
+		.then(result => { // Print the results                                                                                                                                            
+			for (row of result) {
+				console.log(row)
+			}
+		})
+		.then(conn.destroy()) // Close the connection                                                                                                                                     
+})
 
 app.listen(3000, function() {
 	console.log("start! express server on port 3000");
