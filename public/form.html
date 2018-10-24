@@ -31,8 +31,9 @@
 
             xhr.addEventListener('load', function(){
                 var result = JSON.parse(xhr.responseText);
-                if(result.result != 'ok') return;
-                document.querySelector('.result').innerHTML = result.email;
+                var resultDiv = document.querySelector('.result');
+                if(result.result != 'ok') resultDiv.innerHTML = "you don't have an email";
+                else resultDiv.innerHTML = result.userName;
             })
         }
     </script>
