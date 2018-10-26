@@ -2,20 +2,13 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var main = require('./router/main')
+
 var connection = mysql.createConnection({
-	/**DB 정보 */
+
 });
 
 connection.connect();
-// .then(conn => {
-// 	conn.query('SELECT "Hello world!" as my_message') // Execute a query                                                                                                                                
-// 		.then(result => { // Print the results                                                                                                                                            
-// 			for (row of result) {
-// 				console.log(row)
-// 			}
-// 		})
-// 		.then(conn.destroy()) // Close the connection                                                                                                                                     
-// })
 
 app.listen(3000, function() {
 	console.log("start! express server on port 3000");
@@ -32,10 +25,7 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname+"/public/main.html");
 });
 
-app.get('/main', function(req, res){
-	
-	res.sendFile(__dirname+"/public/main.html");
-});
+app.use('/main', main);
  
 app.post('/email_post', function(req, res){
 	console.log(req.body.email);
