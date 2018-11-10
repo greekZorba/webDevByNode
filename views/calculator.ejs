@@ -74,7 +74,7 @@
 
             $(document).keydown(function(event){
                 
-                if(event.keyCode == '8'){
+                if(event.keyCode == '8'){ // 백스페이스를 눌리면 입력 값을 지워줌 
                     var originText = $('#textBox').val();
                     $('#textBox').val(originText.substring(0, originText.length-1));
                 }

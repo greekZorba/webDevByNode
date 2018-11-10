@@ -27,9 +27,12 @@ router.post('/', function(req, res){
 	var name = body.name;
 	var password = body.password;
 	
-	var query = connection.query('insert into node_inflearn_user(user_name, user_email, user_password) values("'+name+'", "'+email+'","'+password+'")', function(err,rows){
+	var sql = {user_name: name, user_email: email, user_password:password};
+	var query = connection.query('insert into node_inflearn_user set ?', sql, function(err,rows){
 		if(err){ throw err;}	
-		console.log('db insert success')
+		else{
+			res.render('welcome.ejs', {'seq': rows.insertId, 'name': name});
+		}
 	})
 	
 	
