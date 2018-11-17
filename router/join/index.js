@@ -18,7 +18,7 @@ connection.connect();
 // Router
 router.get('/', function(req, res){
 	console.log('join index connect success');
-	res.sendFile(path.join(__dirname, "../../public/join.html"));
+	res.render('join.ejs');
 });
 
 router.post('/', function(req, res){
@@ -34,8 +34,6 @@ router.post('/', function(req, res){
 			res.render('welcome.ejs', {'seq': rows.insertId, 'name': name});
 		}
 	})
-	
-	
 })
  
 module.exports = router;
