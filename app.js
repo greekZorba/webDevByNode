@@ -16,4 +16,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.set('view engine', 'ejs')
 
-app.use(router);
+/** 미들웨어 설정 start */
+app.use(session({
+	secret: 'keyboard cat', 
+	resave: false,
+	saveUninitialized: true
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+/** 미들웨어 설정 end */
+
+app.use(router)
+
