@@ -25,7 +25,15 @@ router.get('/', function(req, res){
 	res.render('join.ejs', {'message' : msg});
 });
 
-// passport.serializeUser
+passport.serializeUser(function(user, done){
+	console.log('passport session save :', user.id);
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done){
+	console.log('passport session get id :', id);
+	done(null, id);
+});
 
 passport.use('local-join', new LocalStrategy({
 	usernameField:'email',
