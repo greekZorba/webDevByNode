@@ -35,7 +35,8 @@
             xhr.addEventListener('load', function(){
                 var result = JSON.parse(xhr.responseText);
                 var resultDiv = document.querySelector('.result');
-                if(result.email) resultDiv.innerHTML = 'welcome '+result.email+'!!';
+                if(result.email) window.location.href='/main';
+                else if(xhr.status ===401) resultDiv.innerHTML = result+ "<div class='signup'><a href ='/join'>Sign Up </a></div>"
                 else resultDiv.innerHTML = result;
             })
         }
