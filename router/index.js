@@ -8,6 +8,7 @@ var email = require('./email/email')
 var join = require('./join/index')
 var login = require('./login/index')
 var logout = require('./logout/index')
+var movie = require('./movie/index')
 var calculator = require('./calculator/calculator')
 
 // url routing
@@ -21,6 +22,7 @@ router.use('/email', email);
 router.use('/join', join);
 router.use('/login', login);
 router.use('/logout', logout);
+router.use('/movie', movie);
 router.use('/calculator', calculator);
 
 module.exports = router;
